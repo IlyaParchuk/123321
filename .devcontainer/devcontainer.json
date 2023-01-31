@@ -1,0 +1,58 @@
+#include <iostream>
+#include <locale>
+#include <cstdlib>
+using namespace std;
+
+
+/*Дана матрица размера N×M. Удалить первый столбец, содержащий
+только положительные элементы.*/
+
+
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	const int m = 3;
+	const int n = 3;
+	int x[m][n];
+	
+	for (int i = 0;i < m;i++)
+	for (int j = 0;j < n;j++)
+		{
+			cout << "x[" << i + 1 << "][" << j + 1 << "]=";
+			cin >> x[i][j];
+		}
+
+	int  i, j, k, g;
+	
+	
+	for (j = 0;j < m;++j)
+	{
+		g = 0;
+		for (i = 0;i < n;++i)
+			if (x[i][j] > 0) ++g;
+
+		if (g == n)
+		{
+			for (k = j;k < m - 1;++k)
+				for (i = 0;i < n;++i)
+					x[i][k] = x[i][k + 1];
+
+			-m;
+
+			break;
+		}
+	}
+
+	for (int i = 0;i < m;i++)
+	{ 
+		for (int j = 0;j < n - 1;j++)
+		{
+			cout << x[i][j] << "\t ";
+		}
+	cout << endl;
+	}
+	return 0;
+	
+}
